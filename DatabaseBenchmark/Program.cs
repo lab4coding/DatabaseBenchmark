@@ -61,7 +61,7 @@ namespace DatabaseBenchmark
             var databases = startupOptions.Databases;
             if (startupOptions.Databases == null || startupOptions.Databases.Length == 0 || startupOptions.Databases.Any(s => s == "*"))
             {
-                databases = new string[] { "sqlserver", "mysql", "mariadb", "postgresql" };
+                databases = new string[] { "mysql", "mariadb", "postgresql", "sqlserver" };
             }
             foreach (var db in databases)
             {
