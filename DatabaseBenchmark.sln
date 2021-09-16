@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseBenchmark", "DatabaseBenchmark\DatabaseBenchmark.csproj", "{87A2B28C-3637-4263-A18A-B124C89381CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{FCF01C32-81F4-4C85-AD0B-E776CC644D6B}"
+	ProjectSection(SolutionItems) = preProject
+		scripts.sh = scripts.sh
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87A2B28C-3637-4263-A18A-B124C89381CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87A2B28C-3637-4263-A18A-B124C89381CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87A2B28C-3637-4263-A18A-B124C89381CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87A2B28C-3637-4263-A18A-B124C89381CB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {34A79035-39AC-43A4-AAEF-15641DEAD41E}
+	EndGlobalSection
+EndGlobal
