@@ -52,11 +52,11 @@ namespace DatabaseBenchmark
         {
             var options = new DbTestOptions
             {
-                ConcurrentCount = startupOptions.Concurrent,
-                InsertPageSize = startupOptions.InsertPageSize,
-                ReadCount = startupOptions.ReadCount,
-                ReadPageSize = startupOptions.ReadPageSize,
-                RecordCount = startupOptions.InsertCount
+                ConcurrentCount = Math.Max(startupOptions.Concurrent, 1),
+                InsertPageSize = Math.Max(startupOptions.InsertPageSize, 1),
+                ReadCount = Math.Max(startupOptions.ReadCount, 1),
+                ReadPageSize = Math.Max(startupOptions.ReadPageSize, 1),
+                RecordCount = Math.Max(startupOptions.InsertCount, 1)
             };
             var databases = startupOptions.Databases;
             if (startupOptions.Databases == null || startupOptions.Databases.Length == 0 || startupOptions.Databases.Any(s => s == "*"))

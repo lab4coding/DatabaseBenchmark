@@ -36,13 +36,13 @@ namespace DatabaseBenchmark
             };
         }
 
-        public static Func<IServiceProvider, string, Task> GetDelete<T>(int readPageSize = 100) where T : TestDbContext
+        public static Func<IServiceProvider, string, Task> GetDelete<T>(int readPageSize = 100, int batchSize = 1) where T : TestDbContext
         {
             return async (sp, t) =>
             {
                 using var scope = sp.GetRequiredService<IServiceScopeFactory>().CreateScope();
                 var context = scope.ServiceProvider.GetRequiredService<T>();
-                await TestRunner.TestDelete(context, readPageSize).ConfigureAwait(false);
+                await TestRunner.TestDelete(context, readPageSize, batchSize).ConfigureAwait(false);
             };
         }
 

@@ -44,7 +44,7 @@ Pellentesque sollicitudin sed risus at ultrices. Nunc nec eros turpis. In non ul
                 serviceProvider);
             await TestConcurrent(1,
                 $"{dbName} Delete",
-                TestFactories.GetDelete<T>(options.ReadPageSize),
+                TestFactories.GetDelete<T>(options.ReadPageSize, options.ConcurrentCount),
                 serviceProvider);
         }
 
@@ -90,7 +90,7 @@ Pellentesque sollicitudin sed risus at ultrices. Nunc nec eros turpis. In non ul
             }
         }
 
-        internal static async Task TestDelete(TestDbContext context, int readPageSize)
+        internal static async Task TestDelete(TestDbContext context, int readPageSize, int batchSize = 1)
         {
             var users = context.Users;
             var totalCount = await users.CountAsync().ConfigureAwait(false);
@@ -100,9 +100,19 @@ Pellentesque sollicitudin sed risus at ultrices. Nunc nec eros turpis. In non ul
             while (deletedCount < totalCount)
             {
                 var list = await context.Users.Take(readPageSize).ToListAsync().ConfigureAwait(false);
+                var c = 0;
                 for (int j = 0; j < list.Count - 1; j++)
                 {
                     context.Remove(list[j]);
+                    c++;
+                    if (c >= batchSize)
+                    {
+                        await context.SaveChangesAsync().ConfigureAwait(false);
+                        c = 0;
+                    }
+                }
+                if (c > 0)
+                {
                     await context.SaveChangesAsync().ConfigureAwait(false);
                 }
                 context.ChangeTracker.Clear();
