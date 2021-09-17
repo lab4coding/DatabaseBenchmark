@@ -34,7 +34,7 @@ namespace DatabaseBenchmark
                 new Option<int>("--read-pagesize", ()=> options.ReadPageSize),
                 new Option<int>("--read-count", () => options.ReadCount),
                 new Option<int>("--insert-count", () => options.RecordCount),
-                new Option<int>("--insert-pageSize", () => options.InsertPageSize),
+                new Option<int>("--insert-pagesize", () => options.InsertPageSize),
                 new Option<string[]>(new[] { "--databases", "-d" }, () => Array.Empty<string>())
             };
 
